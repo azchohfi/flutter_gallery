@@ -9,6 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab # v3.5.2
       - uses: subosito/flutter-action@48cafc24713cca54bbe03cdc3a423187d413aafa # v2.10.0
+        with:
+          channel: master
 
       - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
       - uses: microsoft/setup-msstore-cli@3b2ec9136230357ce9abc02b9d056626fb248d3f # v1
@@ -21,7 +23,7 @@ jobs:
         run: flutter pub get
       
       - name: Create MSIX package
-        run: msstore package
+        run: msstore package -v
       
       - name: Publish MSIX to the Microsoft Store
         run: msstore publish -v
